@@ -9,7 +9,11 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    var paused:Bool = true
+    
+    @IBOutlet weak var playButton:UIButton?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -19,7 +23,16 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    @IBAction func pressPlay(sender:UIButton) {
+        if paused {
+            playButton?.setTitle("Play", for: .normal)
+            paused = false
+        }
+        else {
+            playButton?.setTitle("Pause", for: .normal)
+            paused = true
+        }
+    }
 }
 
