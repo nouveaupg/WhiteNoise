@@ -9,8 +9,9 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
-    var paused:Bool = true
+    // lol argument against using enum
+    var playing:Int = 0
+    var soundTimer:Timer? = nil
     
     @IBOutlet weak var playButton:UIButton?
     @IBOutlet weak var levelsMeter:LevelsMeterView?
@@ -27,13 +28,17 @@ class ViewController: UIViewController {
     }
     
     @IBAction func pressPlay(sender:UIButton) {
-        if paused {
-            playButton?.setTitle("Play", for: .normal)
-            paused = false
+        if playing <= 1 {
+            playButton?.setTitle("Pause", for: .normal)
+            playing = 2
+            soundTimer = Timer.scheduledTimer(timeInterval: 0.05, target: levelsMeter!, selector: Selector(("next")), userInfo: nil, repeats: true)
         }
         else {
-            playButton?.setTitle("Pause", for: .normal)
-            paused = true
+            playButton?.setTitle("Play", for: .normal)
+            playing = 1
+            if soundTimer != nil {
+                soundTimer?.invalidate()
+            }
         }
     }
 }

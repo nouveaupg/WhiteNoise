@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -19,24 +19,18 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="vrf-rv-CS4">
-                                <rect key="frame" x="14" y="617" width="347" height="31"/>
+                                <rect key="frame" x="14" y="430" width="292" height="31"/>
                             </slider>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8PD-9y-55a" customClass="LevelsMeterView" customModule="WhiteNoise" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="60" width="375" height="318"/>
+                                <rect key="frame" x="0.0" y="83" width="320" height="131"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="White Noise" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FZZ-db-4wC">
-                                <rect key="frame" x="16" y="7" width="343" height="32"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4dL-YB-P2Q">
-                                <rect key="frame" x="16" y="579" width="90" height="30"/>
+                                <rect key="frame" x="16" y="392" width="90" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="90" id="sYv-GE-QVp"/>
                                 </constraints>
@@ -45,32 +39,61 @@
                                     <action selector="pressPlayWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IHk-Dj-D7v"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="White Noise" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FZZ-db-4wC">
+                                <rect key="frame" x="16" y="28" width="288" height="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="jSl-f5-4DV">
+                                <rect key="frame" x="10.5" y="356" width="299" height="29"/>
+                                <segments>
+                                    <segment title="RC4"/>
+                                    <segment title="/dev/random"/>
+                                    <segment title="/dev/urandom"/>
+                                </segments>
+                                <connections>
+                                    <action selector="setRNGWithSender:" destination="8PD-9y-55a" eventType="valueChanged" id="tIO-1G-8OK"/>
+                                </connections>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Random Enthropy Source" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wbC-7s-fxt">
+                                <rect key="frame" x="62.5" y="327" width="195" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="vrf-rv-CS4" secondAttribute="bottom" constant="20" id="0o5-xP-nm9"/>
-                            <constraint firstItem="8PD-9y-55a" firstAttribute="top" secondItem="FZZ-db-4wC" secondAttribute="bottom" constant="21" id="1f9-pE-LUf"/>
+                            <constraint firstItem="8PD-9y-55a" firstAttribute="top" secondItem="FZZ-db-4wC" secondAttribute="bottom" constant="23" id="1f9-pE-LUf"/>
                             <constraint firstItem="FZZ-db-4wC" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="34O-Xx-Vj0"/>
+                            <constraint firstItem="wbC-7s-fxt" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7kK-35-kS5"/>
+                            <constraint firstItem="4dL-YB-P2Q" firstAttribute="top" secondItem="jSl-f5-4DV" secondAttribute="bottom" constant="8" id="FXe-7x-h5e"/>
                             <constraint firstItem="4dL-YB-P2Q" firstAttribute="leading" secondItem="vrf-rv-CS4" secondAttribute="leading" id="I9P-sA-gPz"/>
+                            <constraint firstItem="8PD-9y-55a" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ILx-py-Im3"/>
                             <constraint firstItem="vrf-rv-CS4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="OdJ-kZ-kAa"/>
                             <constraint firstItem="8PD-9y-55a" firstAttribute="centerX" secondItem="vrf-rv-CS4" secondAttribute="centerX" id="TVO-XL-dVO"/>
                             <constraint firstItem="8PD-9y-55a" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="abT-WA-UNp"/>
                             <constraint firstAttribute="trailing" secondItem="8PD-9y-55a" secondAttribute="trailing" id="bJ1-J0-Llm"/>
-                            <constraint firstItem="FZZ-db-4wC" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="7" id="c2s-yo-ALR"/>
+                            <constraint firstItem="FZZ-db-4wC" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="28" id="c2s-yo-ALR"/>
                             <constraint firstItem="vrf-rv-CS4" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="dBb-2f-6Sa"/>
-                            <constraint firstAttribute="bottom" secondItem="8PD-9y-55a" secondAttribute="bottom" constant="289" id="eDx-RW-ojq"/>
+                            <constraint firstAttribute="bottom" secondItem="8PD-9y-55a" secondAttribute="bottom" constant="266" id="eDx-RW-ojq"/>
+                            <constraint firstAttribute="trailing" secondItem="8PD-9y-55a" secondAttribute="trailing" id="gGK-eC-McX"/>
+                            <constraint firstItem="jSl-f5-4DV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lDX-y6-NCb"/>
                             <constraint firstItem="FZZ-db-4wC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="moz-NE-oLO"/>
+                            <constraint firstItem="jSl-f5-4DV" firstAttribute="top" secondItem="wbC-7s-fxt" secondAttribute="bottom" constant="8" id="oIk-iT-Baa"/>
                             <constraint firstItem="vrf-rv-CS4" firstAttribute="top" secondItem="4dL-YB-P2Q" secondAttribute="bottom" constant="8" symbolic="YES" id="v1q-ca-Tcz"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="levelsMeter" destination="8PD-9y-55a" id="S97-N9-uxi"/>
+                        <outlet property="levelsMeter" destination="8PD-9y-55a" id="NmQ-xX-OWo"/>
                         <outlet property="playButton" destination="4dL-YB-P2Q" id="a0c-uf-hIu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="137.18140929535232"/>
+            <point key="canvasLocation" x="134.765625" y="136.16398243045387"/>
         </scene>
     </scenes>
 </document>
