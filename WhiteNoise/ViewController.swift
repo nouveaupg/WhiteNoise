@@ -13,10 +13,12 @@ class ViewController: UIViewController {
     var paused:Bool = true
     
     @IBOutlet weak var playButton:UIButton?
+    @IBOutlet weak var levelsMeter:LevelsMeterView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        levelsMeter?.setNeedsDisplay()
     }
 
     override func didReceiveMemoryWarning() {
